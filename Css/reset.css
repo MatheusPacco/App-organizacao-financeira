@@ -21,7 +21,7 @@ body{
     overflow-x: hidden;
 }
 
-button {
+.btn-default{
     font-size: 1.6rem;
     width: 180px;
     border: 1px solid #13161A;

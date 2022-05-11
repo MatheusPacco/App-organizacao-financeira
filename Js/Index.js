@@ -5,7 +5,6 @@ document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
     let GerandoDespesa = GerandoArray(); 
     banco.gravar(GerandoDespesa); 
-    banco.recuperarTodosRegistros();
 })  
 
 class Despesa{
@@ -78,7 +77,8 @@ class Bd {
 
             despesas.push(despesa) 
         }
-        console.log(despesas);
+        
+        return despesas;
     }
 }
 
@@ -92,16 +92,32 @@ const botao = document.getElementById('btn-consulta').addEventListener('click', 
         dia: 10, 
         mes: 02, 
         ano: 2003,
+        categoria: "QualquerUm",
+        valor: 2500,  
         descricao: 'Qualquer texto ai basicamente' 
     }
 
+    let infosteste = Array(); 
+    infosteste = banco.recuperarTodosRegistros();
+    console.log(infosteste);
+      
     divCriada.innerHTML = ` 
     <div class="container-historico">
-        <div class="row-historico-1">
-            <img class="icone-historico" src="img/Emoji-Cowboy.png" alt="">
-            <div id="data-historico" class="data-historico">
-                ${informacoesGerais.dia} / ${informacoesGerais.mes} / ${informacoesGerais.ano}} 
+            <div class="row-historico-1">
+                <img class="icone-historico" src="img/Emoji-Cowboy.png" alt="">
+                <div id="data-historico" class="data-historico">
+                    ${informacoesGerais.dia} / ${informacoesGerais.mes} / ${informacoesGerais.ano} 
+                </div>
+            <div class="tipo-historico">
+                <h3> Tipo </h3>
+                <p> ${informacoesGerais.categoria}</p>
             </div>
+
+            <div class="valor-historico">
+                <h3> valor </h3>
+                <p> R$ ${informacoesGerais.valor} ,00</p>
+            </div>
+
             <div class="box-historico-descricao">
                 <h3> Descrição </h3>
                 <div class="historico-descricao">
