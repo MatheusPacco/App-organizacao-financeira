@@ -1,34 +1,12 @@
 // Objetivo é capturar todas informações do INPUS e atribui-los a um ARRAY 
 // ou objeto, para que possam, posteriormente, ser atribuido a uma CLASS de uma pessoa... 
 
-class Usuario {
-    constructor() {
-        this.nome = 'Nome do Usuário' 
-    }
-}   
-
-let UsuarioUm = new Usuario; 
-
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
     let GerandoDespesa = GerandoArray(); 
-    console.log(GerandoDespesa);
-    // GerandoHistorico(); 
     banco.gravar(GerandoDespesa); 
+    banco.recuperarTodosRegistros();
 })  
-
-let GerandoArray = function () {
-    const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
-    let ArrayDeValores = Array()
-
-    inputsSelecionados.forEach(inputsSelecionados => {
-        ArrayDeValores.push(inputsSelecionados.value)
-    });
-
-    //Criando a entidade Despesa
-    UsuarioUm.Despesa = new Despesa(...ArrayDeValores)
-    return UsuarioUm;
-}
 
 class Despesa{
     constructor (dia, mes, ano, descricao, valor) {
@@ -40,6 +18,21 @@ class Despesa{
         this.valor = valor; 
     }
 } 
+
+let GerandoArray = function () {
+    const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
+    let ArrayDeValores = Array()
+
+    inputsSelecionados.forEach(inputsSelecionados => {
+        ArrayDeValores.push(inputsSelecionados.value)
+    });
+
+    //Criando a entidade Despesa
+    let DespesaQualquer = new Despesa(...ArrayDeValores)
+    return DespesaQualquer
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Gravando os objetos dentro do Local Storege que irá manter a informação de forma permanente 
@@ -70,6 +63,22 @@ class Bd {
         localStorage.setItem(id, JSON.stringify(despesaCriada))
 
         localStorage.setItem('id', id)
+    }
+
+    recuperarTodosRegistros() {
+        let despesas = Array(); 
+
+        let id = localStorage.getItem('id')
+        for (let i = 1; i <= id; i++) {
+            let despesa = JSON.parse(localStorage.getItem(id))
+
+            if (despesa === null) {
+                continue
+            }
+
+            despesas.push(despesa) 
+        }
+        console.log(despesas);
     }
 }
 
