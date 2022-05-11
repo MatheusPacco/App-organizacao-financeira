@@ -8,61 +8,70 @@ class Usuario {
 }   
 
 let UsuarioUm = new Usuario; 
-let Acumalador = 1; 
 
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
-    let teste = GerandoArray(); 
-    console.log(teste);
+    let GerandoDespesa = GerandoArray(); 
+    console.log(GerandoDespesa);
     // GerandoHistorico(); 
-    gravar(teste); 
+    banco.gravar(GerandoDespesa); 
 })  
 
 let GerandoArray = function () {
     const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
     let ArrayDeValores = Array()
 
-    // for (let i = 0; i < inputsSelecionados.length; i++) {
-    //     ArrayDeValores[i] = inputsSelecionados.item(i).value; 
-    // }
-
     inputsSelecionados.forEach(inputsSelecionados => {
         ArrayDeValores.push(inputsSelecionados.value)
     });
 
-    class Despesa{
-        constructor (dia, mes, ano, descricao, valor) {
-            this.dia = dia; 
-            this.mes = mes; 
-            this.ano = ano;
-            // this.categoria = categoria; 
-            this.descricao = descricao; 
-            this.valor = valor; 
-        }
-    } 
-    
-    for (const key in UsuarioUm) {
-        console.log(key);
-        if ([key] == "Despesa") {
-            Acumalador++
-            UsuarioUm[Acumalador] = new Despesa(...ArrayDeValores)
-            return UsuarioUm
-        }
-    }
-
+    //Criando a entidade Despesa
     UsuarioUm.Despesa = new Despesa(...ArrayDeValores)
     return UsuarioUm;
- 
 }
+
+class Despesa{
+    constructor (dia, mes, ano, descricao, valor) {
+        this.dia = dia; 
+        this.mes = mes; 
+        this.ano = ano;
+        // this.categoria = categoria; 
+        this.descricao = descricao; 
+        this.valor = valor; 
+    }
+} 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Gravando os objetos dentro do Local Storege que irá manter a informação de forma permanente 
 // Sendo necessário deletar manualmente
+class Bd {
+    constructor() {
+        let idValidacao = localStorage.getItem('id')
 
-function gravar(despesaCriada) {
-    // instrução que nos retorna o objeto de navegador
-    // SetItem permite o uso de dois parâmetros (idadentidade, objeto em questão, que será armazenado)
-    // Por ser um método engessado, o SetItem subrescreve o objeto já existente 
-    
-    localStorage.setItem('Despesa', JSON.stringify(despesaCriada))
+        //Isso acontecerá automáticamente quando iniciar a página, já que na parte infeior nós já instânciamos um objeto
+
+        if (idValidacao === null) {
+            localStorage.setItem('id', 0)
+        }
+    }
+
+    proximoID () {
+        let proximoId = localStorage.getItem('id')
+        return parseInt(proximoId) + 1
+    }
+
+    gravar(despesaCriada) {
+        // instrução que nos retorna o objeto de navegador
+        // SetItem permite o uso de dois parâmetros (idadentidade, objeto em questão, que será armazenado)
+        // Por ser um método engessado, o SetItem subrescreve o objeto já existente 
+        
+        let id = this.proximoID(); 
+
+        localStorage.setItem(id, JSON.stringify(despesaCriada))
+
+        localStorage.setItem('id', id)
+    }
 }
+
+// Instânciado o objeto
+let banco = new Bd(); 
