@@ -12,6 +12,8 @@
 .Container-Navegacao {
     font-size: 1.6rem;
     display: flex;
+    position: fixed;
+    top: 0; bottom: 0;
     flex-direction: column;
     /* align-items: center; */
     /* justify-content: center; */
@@ -39,7 +41,8 @@ nav ul li {
 .Aba-Navegacao {
     background-color: var(--Background-Navegacao);
     border-radius: 0.4rem;
-    height: 100vh;
+    min-height: 100%;
+    /* box-sizing: border-box; */
 }
 
 .Btn-Navegacao:active{
@@ -68,9 +71,10 @@ button:focus{
 .Container-Cadastro {
     background-color: var(--Background-Container-Pai);
     width: 100%;   
-    padding-left: 6.4rem;
+    min-height: 100%;
+    padding-bottom: 6.4rem;
+    padding-left: calc(244px + 64px);
     padding-top: 6.4rem;
-
 }
 
 h1 {
@@ -165,3 +169,69 @@ select:focus {
     background-color: var(--Cor-Vermelho);
     color: var(--Background-Container-Pai);
 }
+
+/* HISTÓRICO DE DESPESAS */
+
+.box-historico {
+    margin-top: 6.4rem;
+}
+
+.container-historico {
+    background-color: var(--Background-Navegacao);   
+    border-radius: 0.6rem;
+    display: inline-block;
+}
+
+.row-historico-1 {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    padding: 1.6rem 2.0rem ;
+}
+
+.icone-historico{
+    background-color: var(--Background-Container-Pai);
+    padding: 1rem;
+    border-radius: 50%;
+    width: 3.6rem;
+}
+
+.data-historico {
+    background-color: var(--Cor-Verde-Escuro);
+    border: 1px solid var(--Cor-Verde);
+    padding: 0.6rem 1.2rem;
+    border-radius: 64px;
+    color: var(--Cor-Verde);
+    box-shadow: 0px 0px 16px hsl(160, 90%, 44%, 0.36);
+}
+
+.box-historico-descricao {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem; 
+}
+
+.box-historico-descricao::before {
+    content: '';
+    height: 3.2rem;
+    width: 1px;
+    background-color: #475566;
+}
+
+.box-historico-descricao h3 {
+    font-size: 1.6rem;
+    color: var(--Cor-Cinza);
+}
+
+.historico-descricao {
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: var(--Background-Container-Pai);
+    border-radius: 0.4rem;
+}
+
+.btn-editar-historico {
+    width: 7.8rem;
+    margin-right: 1.6rem;
+}
+/* FIM DO HISTÓRICO DE DESPESAS */

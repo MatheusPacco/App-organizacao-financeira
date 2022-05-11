@@ -84,3 +84,36 @@ class Bd {
 
 // Instânciado o objeto
 let banco = new Bd(); 
+
+const botao = document.getElementById('btn-consulta').addEventListener('click', () => {
+    let container = document.getElementById('box-historico')
+    let divCriada = document.createElement('div')
+    let informacoesGerais = {
+        dia: 10, 
+        mes: 02, 
+        ano: 2003,
+        descricao: 'Qualquer texto ai basicamente' 
+    }
+
+    divCriada.innerHTML = ` 
+    <div class="container-historico">
+        <div class="row-historico-1">
+            <img class="icone-historico" src="img/Emoji-Cowboy.png" alt="">
+            <div id="data-historico" class="data-historico">
+                ${informacoesGerais.dia} / ${informacoesGerais.mes} / ${informacoesGerais.ano}} 
+            </div>
+            <div class="box-historico-descricao">
+                <h3> Descrição </h3>
+                <div class="historico-descricao">
+                    ${informacoesGerais.descricao} teste de descrição qualquer aaaa
+                </div>
+            </div>
+            <div>
+                <button id="editar-Historico" class="btn-editar-historico"> Alterar </button>
+                <button id="remover-Historico" class="btn-remover-historico"> Remover </button>
+            </div>
+        </div>
+    </div>`
+
+    container.appendChild(divCriada); 
+})
