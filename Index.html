@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="O App organização financeira tem como objetivo dar total liberdade organizacional para o usuário
+    a fim de que ele faça um uso consciente e equilibrado do seu dinheiro">
+    <meta name="keywords" content="Organização Financiera, Finanças, Economizar, dinheiro">
+    <meta name="author" content="Matheus Pacco Silva">
+    <!-- FIM DOS METAS  -->
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Index.css">
+    <link rel="stylesheet" href="reset.css">
+    <title>App organização financeira</title>
+</head>
+<body>
+    <section class="Container-Navegacao">
+    <nav class="Aba-Navegacao">
+        <img src="Logotipo.png" alt="">
+        <p class="subtitulo"> orçamento pessoal </p>
+        <ul>
+            <li><button class="Btn-Navegacao"> Cadastro </button></li>
+            <li><button > Consulta </button> </li>
+            <li><button > Mais informações </button></li>
+        </ul>
+    </nav>
+    </section>  
+    <section class="Container-Cadastro">
+        <main id="Cadastro-Financeira" class="secao-Consulta">
+            <h1> registro de novas despesas <img src="Emoji-Money.png" alt=""></h1>
+            <form action="" id="Formulario-Cadastro" class="Formulario-Cadastro">
+                <div class="row-1">
+                    <label for="Dia"> Dia 
+                        <input value="12" class="Dia" type="number" placeholder="Digite o dia em questão">
+                    </label>
+                    <label for="Mes"> Mes 
+                    <input  value="02" class="Mes" type="number" placeholder="Digite o mês em questão">
+                    </label>
+                    <label for="Ano"> Ano 
+                    <input value="2012" class="Ano" type="number" placeholder="Digite o Ano em questão">
+                    </label>
+                </div>
+                <div class="row-2">
+                    <label for="Categoria"> Categoria 
+                    <select class="Select-Categoria" id="Seletor-Cadastro">
+                        <option value="0" selected> Escolha uma categoria </option>
+                        <option value="Alimentacao"> Alimentacao </option>
+                        <option value="Roupa"> Roupa </option>
+                        <option value="Educação"> Educação </option>
+                        <option value="Lazer"> Lazer </option>
+                        <option value="Transporte"> Transporte </option>
+                    </select>
+                    </label>
+                    <label for="Descricao"> Descrição 
+                        <input value="Descrição geral do conteúdo" type="text" class="Input-Descricao" placeholder="Digite a descrição que desejar sobre a atividade">
+                    </label>
+                </div>
+                <div class="row-3">
+                    <label for="Cadastro-Valor"> Valor 
+                        <input value="2500" type="number" class="input-Valor" placeholder="Digite um valor">
+                    </label>
+                    <div>
+                        <button id="ConfirmarCadastro" class="Btn-Cadastro-Confirmar"> Confirmar </button>
+                        <button class="Btn-Cadastro-Cancelar"> Cancelar </button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </section>
+</body>
+<script src="index.js"></script>
+</html>

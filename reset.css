@@ -1,0 +1,34 @@
+ul {list-style-type: none;}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    color: hsl(0, 0%, 90%);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    font-size: 1.6rem;
+    width: 180px;
+    border: 1px solid #13161A;
+    border-radius: 0.6rem;
+    color: #475566;
+    background-color: none;
+    cursor: pointer;
+    padding: 1.2rem 0px;
+    background-color: #1C2025;
+    
+}

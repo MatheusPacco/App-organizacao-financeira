@@ -1,0 +1,167 @@
+:root {
+    --Background-Navegacao: #13161A;   
+    --Background-Container-Pai:  #1C2025; 
+    --Cor-Verde: #0BD793 ;
+    --Cor-Vermelho: #ff4d4d ;
+    --Cor-Verde-Escuro: #0F261E;
+    --Cor-Cinza: #475566;
+    --White: hsl(0, 0%, 90%);  
+}
+
+/* Começando aba de navegação  */
+.Container-Navegacao {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    background-color: var(--Background-Container-Pai);
+    /* height: 100vh; */
+}
+
+.subtitulo {
+    font-style: italic;
+    color: var(--Cor-Cinza);
+}
+
+nav {
+    padding: 6.4rem 3.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+nav ul li {
+    margin-bottom: 1.8rem;
+}
+
+.Aba-Navegacao {
+    background-color: var(--Background-Navegacao);
+    border-radius: 0.4rem;
+    height: 100vh;
+}
+
+.Btn-Navegacao:active{
+    font-size: 1.6rem;
+    background-color: var(--Cor-Verde-Escuro);
+    border: 1px solid var(--Cor-Verde);
+    padding: 1.2rem 0px;
+    width: 180px;
+    border-radius: 0.6rem;
+    color: var(--Cor-Verde);
+    cursor: pointer;
+}
+
+button:focus{
+    font-size: 1.6rem;
+    background-color: var(--Cor-Verde-Escuro);
+    border: 1px solid var(--Cor-Verde);
+    width: 180px;
+    border-radius: 0.6rem;
+    color: var(--Cor-Verde);
+    cursor: pointer;
+}
+
+/* Fim da aba de navegação  */
+
+.Container-Cadastro {
+    background-color: var(--Background-Container-Pai);
+    width: 100%;   
+    padding-left: 6.4rem;
+    padding-top: 6.4rem;
+
+}
+
+h1 {
+    font-size: 4.2rem;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1.5px;
+}
+
+h1 img {
+    width: 4.4rem;
+}
+
+.row-1, .row-2,  .row-3{
+    display: flex;
+    gap: 1.8rem;
+    padding-top: 3.2rem;
+}
+
+.row-3 {
+    align-items: flex-end;
+}
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: medium;
+}
+
+input, select {
+    font-size: 1.4rem;
+    color: var(--Cor-Cinza);
+    background-color: var(--Background-Navegacao);
+    padding: 1.6rem;
+    border: 1px solid var(--Background-Navegacao);
+    border-radius: 0.4rem;
+    outline: none;
+    width: 280px;
+    min-width: 192px;
+}
+
+.Input-Descricao{
+    width: 360px;
+}
+
+input::placeholder {
+    color: var(--Cor-Cinza);
+}
+
+input:focus {
+    border: 1px solid var(--Cor-Verde);
+    color: var(--White);
+}
+
+select:focus {
+    border: 1px solid var(--Cor-Verde);
+    color: var(--White);
+}
+
+.Select-Categoria option {
+    color: var(--Cor-Cinza);
+    padding: 1rem; 
+}
+
+.Select-Categoria option:hover {
+    color: var(--Background-Container-Pai);
+    background-color: #0BD793;
+}
+
+.Btn-Cadastro-Confirmar {
+    height: 54.8px;
+    background-color: var(--Cor-Verde);
+    color: var(--Background-Container-Pai);
+
+}
+
+.Btn-Cadastro-Confirmar:hover {
+    box-shadow: 0px 6px 16px hsl(160, 90%, 44%, 0.36);
+    border: 1px solid var(--Cor-Verde);
+}
+
+.Btn-Cadastro-Cancelar {
+    height: 54.8px;
+    background-color: var(--Background-Container-Pai);
+    color: var(--Cor-Vermelho);
+    border: 1px solid var(--Cor-Vermelho);
+    margin-left: 1.6rem;
+}
+
+
+.Btn-Cadastro-Cancelar:hover {
+    background-color: var(--Cor-Vermelho);
+    color: var(--Background-Container-Pai);
+}
