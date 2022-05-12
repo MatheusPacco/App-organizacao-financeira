@@ -1,6 +1,8 @@
 // Objetivo é capturar todas informações do INPUS e atribui-los a um ARRAY 
 // ou objeto, para que possam, posteriormente, ser atribuido a uma CLASS de uma pessoa... 
 
+import ChamadaDeConsulta from './historico.js'
+
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
     let GerandoDespesa = GerandoArray(); 
@@ -69,7 +71,7 @@ class Bd {
 
         let id = localStorage.getItem('id')
         for (let i = 1; i <= id; i++) {
-            let despesa = JSON.parse(localStorage.getItem(id))
+            let despesa = JSON.parse(localStorage.getItem(i))
 
             if (despesa === null) {
                 continue
@@ -84,52 +86,13 @@ class Bd {
 
 // Instânciado o objeto
 let banco = new Bd(); 
+let informacoesRegistro = Array(); 
 
 const botao = document.getElementById('btn-consulta').addEventListener('click', () => {
-    let container = document.getElementById('box-historico')
-    let divCriada = document.createElement('div')
-    let informacoesGerais = {
-        dia: 10, 
-        mes: 02, 
-        ano: 2003,
-        categoria: "QualquerUm",
-        valor: 2500,  
-        descricao: 'Qualquer texto ai basicamente' 
-    }
+    informacoesRegistro = banco.recuperarTodosRegistros();
+    //Recuperando os dados do storage da aplicação, se que será redirecionados para as informações no histórico
+    // console.log(informacoesRegistro)
 
-    let infosteste = Array(); 
-    infosteste = banco.recuperarTodosRegistros();
-    console.log(infosteste);
-      
-    divCriada.innerHTML = ` 
-    <div class="container-historico">
-            <div class="row-historico-1">
-                <img class="icone-historico" src="img/Emoji-Cowboy.png" alt="">
-                <div id="data-historico" class="data-historico">
-                    ${informacoesGerais.dia} / ${informacoesGerais.mes} / ${informacoesGerais.ano} 
-                </div>
-            <div class="tipo-historico">
-                <h3> Tipo </h3>
-                <p> ${informacoesGerais.categoria}</p>
-            </div>
+    ChamadaDeConsulta(informacoesRegistro)
 
-            <div class="valor-historico">
-                <h3> valor </h3>
-                <p> R$ ${informacoesGerais.valor} ,00</p>
-            </div>
-
-            <div class="box-historico-descricao">
-                <h3> Descrição </h3>
-                <div class="historico-descricao">
-                    ${informacoesGerais.descricao} teste de descrição qualquer aaaa
-                </div>
-            </div>
-            <div>
-                <button id="editar-Historico" class="btn-editar-historico"> Alterar </button>
-                <button id="remover-Historico" class="btn-remover-historico"> Remover </button>
-            </div>
-        </div>
-    </div>`
-
-    container.appendChild(divCriada); 
 })
