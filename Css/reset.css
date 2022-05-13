@@ -6,6 +6,7 @@ ul {list-style-type: none;}
     color: hsl(0, 0%, 90%);
     font-family: 'Poppins', sans-serif;
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
 }
 
 html {

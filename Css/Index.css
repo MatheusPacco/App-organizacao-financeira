@@ -15,10 +15,7 @@
     position: fixed;
     top: 0; bottom: 0;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     background-color: var(--Background-Container-Pai);
-    /* height: 100vh; */
 }
 
 .subtitulo {
@@ -72,13 +69,34 @@ h1 img {
     width: 4.4rem;
 }
 
-.row-1, .row-2,  .row-3{
+.Formulario-Cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.row-1 {
     display: flex;
     gap: 1.8rem;
-    padding-top: 3.2rem;
+    flex-wrap: wrap;
+    margin-right: 3.2rem;
+    margin-top: 1.8rem;
+}
+
+.row-2{
+
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;  
 }
 
 .row-3 {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.box-botoes{
     align-items: flex-end;
 }
 
@@ -90,7 +108,7 @@ label {
     font-weight: medium;
 }
 
-input, select {
+.row-1 input {
     font-size: 1.4rem;
     color: var(--Cor-Cinza);
     background-color: var(--Background-Navegacao);
@@ -98,11 +116,35 @@ input, select {
     border: 1px solid var(--Background-Navegacao);
     border-radius: 0.4rem;
     outline: none;
-    min-width: 240px;
+    width: 320px;
 }
 
-.Input-Descricao{
-    width: 360px;
+.row-2 input {
+    font-size: 1.4rem;
+    color: var(--Cor-Cinza);
+    background-color: var(--Background-Navegacao);
+    padding: 1.6rem;
+    border: 1px solid var(--Background-Navegacao);
+    border-radius: 0.4rem;
+    outline: none;
+    width: 320px;
+}
+
+.row-3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row-3 input {
+    font-size: 1.4rem;
+    color: var(--Cor-Cinza);
+    background-color: var(--Background-Navegacao);
+    padding: 1.6rem;
+    border: 1px solid var(--Background-Navegacao);
+    border-radius: 0.4rem;
+    outline: none;
+    width: 320px;
 }
 
 input::placeholder {
@@ -120,7 +162,14 @@ select:focus {
 }
 
 .Select-Categoria {
-    min-width: 274px;
+    font-size: 1.4rem;
+    color: var(--Cor-Cinza);
+    background-color: var(--Background-Navegacao);
+    padding: 1.6rem;
+    border: 1px solid var(--Background-Navegacao);
+    border-radius: 0.4rem;
+    outline: none;
+    width: 320px;
 }
 
 .Select-Categoria option {
