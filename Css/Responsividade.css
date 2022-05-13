@@ -1,0 +1,28 @@
+@media screen and (max-width: 1280px) {
+    .row-1 {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .row-1, .row-2, .row-3 {
+        flex-direction: column;
+    }
+
+    .row-3 {
+        align-items: stretch;
+    }
+
+    input, select {
+        max-width: 380px;
+    }
+
+    .Select-Categoria {
+        max-width: 380px;
+    }
+
+    .Input-Descricao {
+        max-width: 380px; 
+    }
+}

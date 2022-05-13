@@ -98,8 +98,7 @@ input, select {
     border: 1px solid var(--Background-Navegacao);
     border-radius: 0.4rem;
     outline: none;
-    width: 280px;
-    min-width: 192px;
+    min-width: 240px;
 }
 
 .Input-Descricao{
@@ -118,6 +117,10 @@ input:focus {
 select:focus {
     border: 1px solid var(--Cor-Verde);
     color: var(--White);
+}
+
+.Select-Categoria {
+    min-width: 274px;
 }
 
 .Select-Categoria option {
@@ -296,14 +299,35 @@ select:focus {
     color: var(--Cor-Vermelho);
 }
 
-.modal{
+.modal-Sucesso{
+    max-width: 360px;
     padding: 1.8rem 2.8rem;
     background-color: var(--Cor-Verde); 
     border-radius: 0.4rem;
     color: var(--Background-Container-Pai);
     font-size: 1.6rem;
     position: absolute;
-    right: 0; top: 0; margin-top: 3.2rem; margin-right: 1.8rem;
+    right: -100%; top: 0; margin-top: 3.2rem; 
+    opacity: 0;
+}
+
+.modal-Erro {
+    max-width: 360px;
+    padding: 1.8rem 2.8rem;
+    background-color: var(--Cor-Vermelho); 
+    border-radius: 0.4rem;
+    color: var(--Background-Container-Pai);
+    font-size: 1.6rem;
+    position: absolute;
+    right: -100%; top: 0; margin-top: 3.2rem; 
+    opacity: 0;
+}
+
+.modal-Sucesso.ativado, .modal-Erro.ativado {
+    transition:all 450ms ease-in-out;
+    right: 0;
+    margin-right: 1.8rem;
+    opacity: 1;
 }
 
 /*FIM INFORMAÇÕES DE ERRO */

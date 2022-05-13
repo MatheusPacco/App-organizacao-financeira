@@ -1,12 +1,11 @@
 // Objetivo é capturar todas informações do INPUS e atribui-los a um ARRAY 
 // ou objeto, para que possam, posteriormente, ser atribuido a uma CLASS de uma pessoa... 
-
+import ativandoModal from './modal.js';
 import ChamadaDeConsulta from './historico.js'
 
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
-    let GerandoDespesa = GerandoArray(); 
-    banco.gravar(GerandoDespesa); 
+    GerandoArray(); 
 })  
 
 class Despesa{
@@ -29,14 +28,18 @@ let GerandoArray = function () {
         ArrayDeValores.push(inputsSelecionados.value)
     });
 
-    validandoFormulario(inputsSelecionados, categoria)
+    if (validandoFormulario(inputsSelecionados, categoria) === 0){
+        //Criando a entidade Despesa
+        let DespesaQualquer = new Despesa(...ArrayDeValores, categoria.value); 
+        banco.gravar(DespesaQualquer);
+        ativandoModal(true)
+        return DespesaQualquer
+        
+    } else {
+        ativandoModal(false)
+    }
     
-    //Criando a entidade Despesa
-    let DespesaQualquer = new Despesa(...ArrayDeValores, categoria.value)
-    return DespesaQualquer
 }
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Gravando os objetos dentro do Local Storege que irá manter a informação de forma permanente 
@@ -75,13 +78,9 @@ class Bd {
         let id = localStorage.getItem('id')
         for (let i = 1; i <= id; i++) {
             let despesa = JSON.parse(localStorage.getItem(i))
-
-            if (despesa === null) {
-                continue
-            }
-
+            if (despesa === null) { continue }
             despesas.push(despesa) 
-        }
+        } 
         
         return despesas;
     }
@@ -102,9 +101,12 @@ const botao = document.getElementById('btn-consulta').addEventListener('click', 
 
 function validandoFormulario (inputs, seletor){
 
-    //Dia
+    let validador = 0; 
+
+    //Dia   
     if (inputs[0].value == '' || inputs[0].value <= 0 || inputs[0].value > 31) {
         adicionandoBordaDeErro(inputs[0]); 
+        validador++
     } else {
         inputs[0].classList.remove('erro-Input')
     }
@@ -112,6 +114,7 @@ function validandoFormulario (inputs, seletor){
     // Mês
     if (inputs[1].value == '' || inputs[1].value <= 0 || inputs[1].value > 12) {
         adicionandoBordaDeErro(inputs[1]); 
+        validador++
     } else {
         inputs[1].classList.remove('erro-Input')
     }
@@ -119,26 +122,30 @@ function validandoFormulario (inputs, seletor){
     // Ano
     if (inputs[2].value == '' || inputs[2].value <= 0 || inputs[2].value < 2012 || inputs[2].value > 2025 ) {
         adicionandoBordaDeErro(inputs[2]); 
+        validador++
     } else {
         inputs[2].classList.remove('erro-Input')
     }
 
     if (seletor.value == 0) {
         seletor.classList.add('erro-Input')
+        validador++
     } else {
         seletor.classList.remove('erro-Input')
     }
 
     if (inputs[4].value == '' || inputs[4].value <= 0) {
         adicionandoBordaDeErro(inputs[4]); 
+        validador++
     } else {
         inputs[4].classList.remove('erro-Input')
     }
 
-    
+    return validador
 }
 
 function adicionandoBordaDeErro (input){
     input.value = ''; 
     input.classList.add('erro-Input')
+    
 }
