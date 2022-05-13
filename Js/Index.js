@@ -24,15 +24,15 @@ class Despesa{
 let GerandoArray = function () {
     const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
     let ArrayDeValores = Array()
-    let categoria = document.querySelector('#Seletor-Cadastro').value
+    let categoria = document.querySelector('#Seletor-Cadastro')
     inputsSelecionados.forEach(inputsSelecionados => {
         ArrayDeValores.push(inputsSelecionados.value)
     });
 
-    validandoFormulario(inputsSelecionados)
+    validandoFormulario(inputsSelecionados, categoria)
     
     //Criando a entidade Despesa
-    let DespesaQualquer = new Despesa(...ArrayDeValores, categoria)
+    let DespesaQualquer = new Despesa(...ArrayDeValores, categoria.value)
     return DespesaQualquer
 }
 
@@ -100,12 +100,45 @@ const botao = document.getElementById('btn-consulta').addEventListener('click', 
 
 })
 
-function validandoFormulario (inputs){
-    console.log(inputs[0].value)
+function validandoFormulario (inputs, seletor){
 
+    //Dia
     if (inputs[0].value == '' || inputs[0].value <= 0 || inputs[0].value > 31) {
-        console.log('input ta errado')
-        inputs[0].value = ''; 
+        adicionandoBordaDeErro(inputs[0]); 
+    } else {
+        inputs[0].classList.remove('erro-Input')
     }
+
+    // Mês
+    if (inputs[1].value == '' || inputs[1].value <= 0 || inputs[1].value > 12) {
+        adicionandoBordaDeErro(inputs[1]); 
+    } else {
+        inputs[1].classList.remove('erro-Input')
+    }
+
+    // Ano
+    if (inputs[2].value == '' || inputs[2].value <= 0 || inputs[2].value < 2012 || inputs[2].value > 2025 ) {
+        adicionandoBordaDeErro(inputs[2]); 
+    } else {
+        inputs[2].classList.remove('erro-Input')
+    }
+
+    if (seletor.value == 0) {
+        seletor.classList.add('erro-Input')
+    } else {
+        seletor.classList.remove('erro-Input')
+    }
+
+    if (inputs[4].value == '' || inputs[4].value <= 0) {
+        adicionandoBordaDeErro(inputs[4]); 
+    } else {
+        inputs[4].classList.remove('erro-Input')
+    }
+
+    
 }
 
+function adicionandoBordaDeErro (input){
+    input.value = ''; 
+    input.classList.add('erro-Input')
+}

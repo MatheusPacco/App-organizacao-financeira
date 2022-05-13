@@ -81,6 +81,7 @@ h1 img {
 .row-3 {
     align-items: flex-end;
 }
+
 label {
     display: flex;
     flex-direction: column;
@@ -284,3 +285,25 @@ select:focus {
 }
 
 /* FIM DO HISTÓRICO DE DESPESAS */
+
+/*COMEÇO INFORMAÇÕES DE ERRO */
+
+.erro-Input {
+    border: 1px solid var(--Cor-Vermelho);
+}
+
+.erro-Input::placeholdear {
+    color: var(--Cor-Vermelho);
+}
+
+.modal{
+    padding: 1.8rem 2.8rem;
+    background-color: var(--Cor-Verde); 
+    border-radius: 0.4rem;
+    color: var(--Background-Container-Pai);
+    font-size: 1.6rem;
+    position: absolute;
+    right: 0; top: 0; margin-top: 3.2rem; margin-right: 1.8rem;
+}
+
+/*FIM INFORMAÇÕES DE ERRO */
