@@ -10,26 +10,29 @@ document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
 })  
 
 class Despesa{
-    constructor (dia, mes, ano, descricao, valor) {
+    constructor (dia, mes, ano, descricao, valor, categoria) {
         this.dia = dia; 
         this.mes = mes; 
         this.ano = ano;
         // this.categoria = categoria; 
         this.descricao = descricao; 
         this.valor = valor; 
+        this.categoria = categoria; 
     }
 } 
 
 let GerandoArray = function () {
     const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
     let ArrayDeValores = Array()
-
+    let categoria = document.querySelector('#Seletor-Cadastro').value
     inputsSelecionados.forEach(inputsSelecionados => {
         ArrayDeValores.push(inputsSelecionados.value)
     });
 
+    validandoFormulario(inputsSelecionados)
+    
     //Criando a entidade Despesa
-    let DespesaQualquer = new Despesa(...ArrayDeValores)
+    let DespesaQualquer = new Despesa(...ArrayDeValores, categoria)
     return DespesaQualquer
 }
 
@@ -96,3 +99,13 @@ const botao = document.getElementById('btn-consulta').addEventListener('click', 
     ChamadaDeConsulta(informacoesRegistro)
 
 })
+
+function validandoFormulario (inputs){
+    console.log(inputs[0].value)
+
+    if (inputs[0].value == '' || inputs[0].value <= 0 || inputs[0].value > 31) {
+        console.log('input ta errado')
+        inputs[0].value = ''; 
+    }
+}
+
