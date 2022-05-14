@@ -2,10 +2,11 @@
 // ou objeto, para que possam, posteriormente, ser atribuido a uma CLASS de uma pessoa... 
 import ativandoModal from './modal.js';
 import ChamadaDeConsulta from './historico.js'
+import validandoFormulario from './validandoFormulario.js';
 
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
-    GerandoArray(); 
+    GerandoDespesa(); 
 })  
 
 class Despesa{
@@ -20,7 +21,7 @@ class Despesa{
     }
 } 
 
-let GerandoArray = function () {
+let GerandoDespesa = function () {
     const inputsSelecionados = document.querySelectorAll('#Formulario-Cadastro input')
     let ArrayDeValores = Array()
     let categoria = document.querySelector('#Seletor-Cadastro')
@@ -29,10 +30,19 @@ let GerandoArray = function () {
     });
 
     if (validandoFormulario(inputsSelecionados, categoria) === 0){
-        //Criando a entidade Despesa
+        //Criando a entidade Despesa e validando informações do formulário
+
         let DespesaQualquer = new Despesa(...ArrayDeValores, categoria.value); 
         banco.gravar(DespesaQualquer);
         ativandoModal(true)
+
+        // Deixando as informações do formulário em Default para que possam ser cadastrados outras tarefas
+        inputsSelecionados.forEach(inputsSelecionados => {
+            inputsSelecionados.value = ''; 
+        });
+
+        categoria.value = '0';
+
         return DespesaQualquer
         
     } else {
@@ -84,6 +94,10 @@ class Bd {
         
         return despesas;
     }
+
+    pesquisar(despesa) {   
+        console.log(despesa)
+    }
 }
 
 // Instânciado o objeto
@@ -93,59 +107,7 @@ let informacoesRegistro = Array();
 const botao = document.getElementById('btn-consulta').addEventListener('click', () => {
     informacoesRegistro = banco.recuperarTodosRegistros();
     //Recuperando os dados do storage da aplicação, se que será redirecionados para as informações no histórico
-    // console.log(informacoesRegistro)
 
     ChamadaDeConsulta(informacoesRegistro)
-
 })
 
-function validandoFormulario (inputs, seletor){
-
-    let validador = 0; 
-
-    //Dia   
-    if (inputs[0].value == '' || inputs[0].value <= 0 || inputs[0].value > 31) {
-        adicionandoBordaDeErro(inputs[0]); 
-        validador++
-    } else {
-        inputs[0].classList.remove('erro-Input')
-    }
-
-    // Mês
-    if (inputs[1].value == '' || inputs[1].value <= 0 || inputs[1].value > 12) {
-        adicionandoBordaDeErro(inputs[1]); 
-        validador++
-    } else {
-        inputs[1].classList.remove('erro-Input')
-    }
-
-    // Ano
-    if (inputs[2].value == '' || inputs[2].value <= 0 || inputs[2].value < 2012 || inputs[2].value > 2025 ) {
-        adicionandoBordaDeErro(inputs[2]); 
-        validador++
-    } else {
-        inputs[2].classList.remove('erro-Input')
-    }
-
-    if (seletor.value == 0) {
-        seletor.classList.add('erro-Input')
-        validador++
-    } else {
-        seletor.classList.remove('erro-Input')
-    }
-
-    if (inputs[4].value == '' || inputs[4].value <= 0) {
-        adicionandoBordaDeErro(inputs[4]); 
-        validador++
-    } else {
-        inputs[4].classList.remove('erro-Input')
-    }
-
-    return validador
-}
-
-function adicionandoBordaDeErro (input){
-    input.value = ''; 
-    input.classList.add('erro-Input')
-    
-}
