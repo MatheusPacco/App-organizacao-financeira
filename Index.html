@@ -82,6 +82,41 @@
         </main>
     </section>
     <section id="Consulta-Despesas" class="Consulta-Cadastro">
+        <main>
+            <h1> Consulte as depsesas cadastradas <img src="img/Emoji-Money.png" alt=""></h1>
+            <form action="" id="Formulario-Consulta" class="Formulario-Cadastro">
+                <div class="row-1">
+                    <label for="Dia"> Dia 
+                        <input type="number" class="Dia" maxlength="2" placeholder="Digite o dia em questão">
+                    </label>
+                    <label for="Mes"> Mes 
+                    <input class="Mes" type="number" maxlength="2" placeholder="Digite o mês em questão">
+                    </label>
+                    <label for="Ano"> Ano 
+                    <input class="Ano" type="number" placeholder="Digite o Ano em questão">
+                    </label>
+                </div>
+                <div class="row-2">
+                    <label for="Categoria"> Categoria 
+                    <select class="Select-Categoria" id="Seletor-Cadastro-Consulta">
+                        <option value="0" selected> Escolha uma categoria </option>
+                        <option value="Alimentacao"> Alimentacao </option>
+                        <option value="Roupa"> Roupa </option>
+                        <option value="Educação"> Educação </option>
+                        <option value="Lazer"> Lazer </option>
+                        <option value="Transporte"> Transporte </option>
+                    </select>
+                    </label>
+                    <label for="Cadastro-Valor"> Valor 
+                        <input value="2500" type="number" class="input-Valor" placeholder="Digite um valor">
+                    </label>
+                    <div class="row-3">
+                        <button id="btn-Pesquisar-Cadastros" class="Btn-Cadastro-Confirmar"> 🔎 Pesquisar </button>
+                        <button id="btn-Pesquisar-Todos-Registros" class="btn-Pesquisa-Registros"> Todos Os Resgistros </button>
+                    </div>
+                </div>
+            </form>
+        </main>
         <div id='box-historico'>
         </div>
     </section>

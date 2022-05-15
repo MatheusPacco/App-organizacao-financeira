@@ -22,7 +22,7 @@ document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
 })  
 
 class Despesa{
-    constructor (dia, mes, ano, descricao, valor, categoria) {
+    constructor (dia, mes, ano, descricao = 'Sem descrição', valor, categoria) {
         this.dia = dia; 
         this.mes = mes; 
         this.ano = ano;
@@ -41,7 +41,7 @@ let GerandoDespesa = function () {
         ArrayDeValores.push(inputsSelecionados.value)
     });
 
-    if (validandoFormulario(inputsSelecionados, categoria) === 0){
+    if (validandoFormulario(inputsSelecionados, categoria, 'registro') === 0){
         //Criando a entidade Despesa e validando informações do formulário
 
         let DespesaQualquer = new Despesa(...ArrayDeValores, categoria.value); 
@@ -107,8 +107,32 @@ class Bd {
         return despesas;
     }
 
-    pesquisar(despesa) {   
-        console.log(despesa)
+    pesquisar(infoPesquisas) {   
+        let despesasFiltradas = Array(); 
+
+        let infos = infoPesquisas; 
+        despesasFiltradas = this.recuperarTodosRegistros() 
+
+        let despesaFinal = Array() 
+        
+        if (infos.ano != '' && infos.ano >= 2012 && infos.ano <= 2025 ) {
+            despesaFinal = despesasFiltradas.filter(d => d.ano == infos.ano)
+        }
+
+        if (infos.mes != '' && infos.mes <= 12 && infos.mes >= 1) {
+            despesaFinal = despesasFiltradas.filter(d => d.mes == infos.mes)
+        }
+        
+        if (infos.dia != '' && infos.dia <= 31 && infos.dia >= 1) {
+            despesaFinal = despesasFiltradas.filter(d => d.dia == infos.dia)
+        }
+        
+        if (infos.valor != '') {
+            despesaFinal = despesasFiltradas.filter(d => d.valor == infos.valor)
+        }
+
+        console.log(despesaFinal)
+        return despesaFinal
     }
 }
 
@@ -130,3 +154,26 @@ btnMenuConsulta.addEventListener('click', () => {
     ChamadaDeConsulta(informacoesRegistro)
 })
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Trabalhando com o ARRAY FILTER - Etapa de pesquisa
+
+const btnPesquisaConsulta = document.getElementById('btn-Pesquisar-Cadastros').addEventListener('click', (e) =>{
+    e.preventDefault(); 
+    const inputsSelecionados = document.querySelectorAll('#Formulario-Consulta input'); 
+    const categoria = document.querySelector('#Seletor-Cadastro-Consulta');   
+    let ArrayValoresConsulta = Array(...inputsSelecionados); 
+
+    let infoPesquisas = new Despesa(ArrayValoresConsulta[0].value, ArrayValoresConsulta[1].value, ArrayValoresConsulta[2].value, undefined , ArrayValoresConsulta[3].value, categoria.value )
+    let pesquisaDespesa = banco.pesquisar(infoPesquisas); 
+
+    ChamadaDeConsulta(pesquisaDespesa, true); 
+})
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const btnExibirTodosRegistros = document.getElementById('btn-Pesquisar-Todos-Registros').addEventListener('click', (e) => {
+    e.preventDefault(); 
+
+    let TodosOsRegistros = banco.recuperarTodosRegistros()
+    ChamadaDeConsulta(TodosOsRegistros); 
+})

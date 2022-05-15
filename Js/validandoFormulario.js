@@ -1,7 +1,9 @@
-export default function validandoFormulario (inputs, seletor){
+export default function validandoFormulario (inputs, seletor, categoria){
 
     let validador = 0; 
 
+    if (categoria == 'registro') {
+         
     //Dia   
     if (inputs[0].value == '' || inputs[0].value <= 0 || inputs[0].value > 31) {
         adicionandoBordaDeErro(inputs[0]); 
@@ -41,6 +43,8 @@ export default function validandoFormulario (inputs, seletor){
     }
 
     return validador
+    }
+
 }
 
 function adicionandoBordaDeErro (input){

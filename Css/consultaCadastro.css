@@ -12,3 +12,22 @@
     padding-top: 6.4rem;
     padding-right: 4.8rem;
 }
+
+.Consulta-Cadastro .Formulario-Cadastro {
+    margin-bottom: 3.2rem;
+}
+
+.btn-Pesquisa-Registros {
+    border-radius: 0.6rem;
+    color: #475566;
+    cursor: pointer;
+    background-color: transparent;
+    margin-right: 1rem;
+    border: none;
+    height: 54.8px;
+    padding: 1.2rem 1.2rem;
+}
+
+.btn-Pesquisa-Registros:hover {
+    border: 1px solid #475566;
+}

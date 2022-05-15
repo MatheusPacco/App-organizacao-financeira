@@ -192,7 +192,7 @@ select:focus {
     align-items: center;
     gap: 1.8rem;
     padding: 2.2rem 1.8rem ;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .icone-historico{
