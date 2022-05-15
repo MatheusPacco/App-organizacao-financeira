@@ -7,7 +7,7 @@ export default function ChamadaDeConsulta (informacoesGerais, filter = false) {
     // tinha feito com o for... 
     // explorar o mitivo dps
 
-    if (filter === false) {
+    if (filter === false) {  
         
     for (i; i < id; i++) {
     let divCriada = document.createElement('div')
@@ -35,19 +35,33 @@ export default function ChamadaDeConsulta (informacoesGerais, filter = false) {
                         ${informacoesGerais[i].descricao} teste de descrição qualquer aaaa
                     </div>
                 </div>
-                <div>
-                    <button id="editar-Historico" class="btn-editar-historico"> Alterar </button>
-                    <button id="remover-Historico" class="btn-remover-historico"> Remover </button>
+                <div id='campoDeBotao${informacoesGerais[i].id}'>
                 </div>
             </div>
         </div>`    
 
         container.appendChild(divCriada); 
+        let campoBotao = document.getElementById(`campoDeBotao${informacoesGerais[i].id}`); 
+        let criandoBotoes = document.createElement('button'); 
+        criandoBotoes.className = "btn-remover-historico"; 
+        criandoBotoes.textContent = 'Remove Registro'; 
+        criandoBotoes.id = `${informacoesGerais[i].id}`; 
+
+        criandoBotoes.onclick = function() {
+            alert(this.id)
+            localStorage.removeItem(id)
+            window.location.reload()
+        }
+
+        console.log(campoBotao);
+        campoBotao.appendChild(criandoBotoes); 
+
         }
     }
 
     if (filter === true ) {
         container.innerHTML = ''; 
+    
 
         if (informacoesGerais.length == 0) {
             alert('nenhum registro com essas características!')
@@ -79,15 +93,26 @@ export default function ChamadaDeConsulta (informacoesGerais, filter = false) {
                             ${informacoesGerais.descricao} teste de descrição qualquer aaaa
                         </div>
                     </div>
-                    <div>
-                        <button id="editar-Historico" class="btn-editar-historico"> Alterar </button>
-                        <button id="remover-Historico" class="btn-remover-historico"> Remover </button>
+                    <div id='campoDeBotao${informacoesGerais.id}'>
                     </div>
                 </div>
             </div>`    
     
             container.appendChild(divCriada); 
-        });
+            
+            let campoBotao = document.getElementById(`campoDeBotao${informacoesGerais.id}`); 
+            let criandoBotoes = document.createElement('button'); 
+            criandoBotoes.className = "btn-remover-historico"; 
+            criandoBotoes.textContent = 'Remove Registro'; 
+            criandoBotoes.id = `${informacoesGerais.id}`; 
 
+            criandoBotoes.onclick = function() {
+                alert(this.id)
+                localStorage.removeItem(id)
+                window.location.reload()
+            }
+
+            campoBotao.appendChild(criandoBotoes); 
+        });
     } 
 }

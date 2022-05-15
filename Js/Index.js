@@ -101,9 +101,13 @@ class Bd {
         for (let i = 1; i <= id; i++) {
             let despesa = JSON.parse(localStorage.getItem(i))
             if (despesa === null) { continue }
+
+            // Atribuindo um ID para remoção dos elementos na aplicação!
+            despesa.id = i; 
             despesas.push(despesa) 
-        } 
-        
+        }  
+
+        console.log(despesas);
         return despesas;
     }
 
