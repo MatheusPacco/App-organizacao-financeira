@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="Css/Index.css">
     <link rel="stylesheet" href="Css/Responsividade.css">
     <link rel="stylesheet" href="Css/reset.css">
+    <link rel="stylesheet" href="Css/consultaCadastro.css">
     <title>App organização financeira</title>
 </head>
 <body>
@@ -27,13 +28,15 @@
         <img src="img/Logotipo.png" alt="">
         <p class="subtitulo"> orçamento pessoal </p>
         <ul>
-            <li><button class="btn-default Ativo"> Cadastro </button></li>
+            <li><button id='btn-Cadastro-menu' class="btn-default Ativo"> Cadastro </button></li>
             <li><button id="btn-consulta" class="btn-default" > Consulta </button> </li>
             <li><button class="btn-default" > Mais informações </button></li>
         </ul>
     </nav>
     </section>  
-    <section id='Container-Cadastro' class="Container-Cadastro">
+
+    <!-- Elemento PAI do cadastro -->
+    <section id='Container-Cadastro' class="Container-Cadastro ativo">
         <!-- <div id='modal' class="modal">
             💾 Registro realizado com sucesso
         </div> -->
@@ -77,41 +80,10 @@
                 </div>
             </form>
         </main>
-
-        <article id="box-historico" class="box-historico">
-            <!-- <div class="container-historico">
-                <div class="row-historico-1">
-                    <img class="icone-historico" src="img/Emoji-Cowboy.png" alt="">
-                    <div id="data-historico" class="data-historico">
-                        18 / 02 / 2022 
-                    </div>
-                    
-                    <div class="tipo-historico">
-                        <h3> Tipo </h3>
-                        <p> Alimentação</p>
-                    </div>
-
-                    <div class="valor-historico">
-                        <h3> valor </h3>
-                        <p> R$ 2500,00</p>
-                    </div>
-                    
-                    <div class="box-historico-descricao">
-                        <h3> Descrição </h3>
-                        <div class="historico-descricao">
-                            teste de descrição qualquer aaaa
-                            teste de descrição qualquer aaaa
-                            teste de descrição qualquer aaaaaaaaaaaaa
-                        </div>
-                    </div>
-
-                    <div>
-                        <button id="editar-Historico" class="btn-editar-historico"> Alterar </button>
-                        <button id="remover-Historico" class="btn-remover-historico"> Remover </button>
-                    </div>
-                </div>
-            </div> -->
-        </article>
+    </section>
+    <section id="Consulta-Despesas" class="Consulta-Cadastro">
+        <div id='box-historico'>
+        </div>
     </section>
 </body>
 <script type="module" src="Js/index.js"></script>

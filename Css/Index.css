@@ -53,13 +53,18 @@ nav ul li {
 
 /* Fim da aba de navegação  */
 
-.Container-Cadastro {
+.Container-Cadastro{
+    display: none;
     background-color: var(--Background-Container-Pai);
     width: 100%;   
     min-height: 100%;
     padding-bottom: 6.4rem;
     padding-left: calc(244px + 64px);
     padding-top: 6.4rem;
+}
+
+.Container-Cadastro.ativo{
+    display: block;
 }
 
 h1 {
@@ -177,63 +182,60 @@ select:focus {
 .container-historico {
     background-color: var(--Background-Navegacao);   
     border-radius: 0.6rem;
-    display: inline-block;
+    display: block;
     margin-bottom: 2.2rem;
+    box-sizing: border-box;
 }
 
 .row-historico-1 {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
-    padding: 2.6rem 2.0rem ;
+    gap: 1.8rem;
+    padding: 2.2rem 1.8rem ;
+    justify-content: space-between;
 }
 
 .icone-historico{
     background-color: var(--Background-Container-Pai);
     padding: 1rem;
     border-radius: 50%;
-    width: 4.2rem;
+    width: 3.8rem;
 }
 
 .data-historico {
     background-color: var(--Cor-Verde-Escuro);
     border: 1px solid var(--Cor-Verde);
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 0.6rem;
+    text-align: center;
     border-radius: 64px;
     color: var(--Cor-Verde);
     box-shadow: 0px 0px 16px hsl(160, 90%, 44%, 0.36);
     font-size: 1.2rem;
+    width: 100px;
 }
 
 .tipo-historico h3{
     color: var(--Cor-Cinza);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .valor-historico h3{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--Cor-Cinza);
 }
 
 .tipo-historico p{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .valor-historico p{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .box-historico-descricao {
     display: flex;
     align-items: center;
     gap: 1.6rem; 
-}
-
-.box-historico-descricao::before {
-    content: '';
-    height: 3.2rem;
-    width: 1px;
-    background-color: #475566;
 }
 
 .box-historico-descricao h3 {
@@ -243,15 +245,17 @@ select:focus {
 
 .historico-descricao {
     font-size: 1.4rem;
-    padding: 1rem;
+    padding: 0.6rem;
     background-color: var(--Background-Container-Pai);
     border-radius: 0.4rem;
-    max-width: 30rem;
+    max-width: 25rem;
     max-height: 4.2rem;
     overflow-y: auto;
     line-height: 1.8;
     overflow-x: hidden;
 }
+
+/*  Modificando o Scroll bar */
 
 .historico-descricao::-webkit-scrollbar {
     width: 0.8rem;
@@ -272,7 +276,7 @@ select:focus {
     padding: 1.2rem 0px;
     background-color: #1C2025;
     width: 7.8rem;
-    margin-right: 1.6rem;
+    margin-right: 1rem;
     border: none;
 }
 
@@ -283,8 +287,19 @@ select:focus {
     padding: 1.2rem 0px;
     background-color: #1C2025;
     width: 7.8rem;
-    margin-right: 1.6rem;
     border: none;
+}
+
+.btn-editar-historico:hover {
+    background-color: var(--Cor-Verde);
+    color: var(--Background-Container-Pai);
+    box-shadow: 4px 4px 16px hsl(160, 90%, 44%, 0.16);
+}
+
+.btn-remover-historico:hover {
+    background-color: var(--Cor-Vermelho);
+    color: var(--Background-Container-Pai);
+    box-shadow: 4px 4px 16px rgba(213, 11, 11, 0.16);
 }
 
 /* FIM DO HISTÓRICO DE DESPESAS */

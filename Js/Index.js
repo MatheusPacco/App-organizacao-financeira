@@ -4,6 +4,18 @@ import ativandoModal from './modal.js';
 import ChamadaDeConsulta from './historico.js'
 import validandoFormulario from './validandoFormulario.js';
 
+const SecaoContainerCadastro = document.getElementById('Container-Cadastro'); 
+const SecaoContainerConsulta = document.getElementById('Consulta-Despesas'); 
+const btnMenuCadastro = document.getElementById('btn-Cadastro-menu'); 
+const btnMenuConsulta = document.getElementById('btn-consulta'); 
+
+btnMenuCadastro.addEventListener('click', () =>{
+    SecaoContainerCadastro.classList.add('ativo'); 
+    SecaoContainerConsulta.classList.remove('ativo'); 
+    btnMenuCadastro.classList.add('Ativo'); 
+    btnMenuConsulta.classList.remove('Ativo'); 
+}); 
+
 document.getElementById('ConfirmarCadastro').addEventListener('click', (e) => {
     e.preventDefault(); 
     GerandoDespesa(); 
@@ -104,8 +116,15 @@ class Bd {
 let banco = new Bd(); 
 let informacoesRegistro = Array(); 
 
-const botao = document.getElementById('btn-consulta').addEventListener('click', () => {
-    informacoesRegistro = banco.recuperarTodosRegistros();
+btnMenuConsulta.addEventListener('click', () => {
+    informacoesRegistro = banco.recuperarTodosRegistros();  
+
+    SecaoContainerCadastro.classList.remove('ativo'); 
+    SecaoContainerConsulta.classList.add('ativo'); 
+
+    btnMenuConsulta.classList.add('Ativo'); 
+    btnMenuCadastro.classList.remove('Ativo'); 
+
     //Recuperando os dados do storage da aplicação, se que será redirecionados para as informações no histórico
 
     ChamadaDeConsulta(informacoesRegistro)

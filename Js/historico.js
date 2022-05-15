@@ -21,7 +21,7 @@ export default function ChamadaDeConsulta (informacoesGerais) {
     
                 <div class="valor-historico">
                     <h3> valor </h3>
-                    <p> R$ ${informacoesGerais[i].valor} ,00</p>
+                    <p> R$ ${informacoesGerais[i].valor}</p>
                 </div>
     
                 <div class="box-historico-descricao">
