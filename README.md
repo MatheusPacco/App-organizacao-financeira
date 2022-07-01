@@ -13,6 +13,7 @@ Desenvolver uma aplicação mais próxima da realidade, com validações, consul
 ### Requisitos e funcionalidade da aplicação
 
 > Criação de despesa:
+
 - O Usuário só poderá criar uma despesa desde que todos os campos estejam preenchidos;
   -  Em caso de um dos campos não estar preenchido (com exceção da entrada de descrição), será exposto um modal informando o erro;
   -  A entrada do campo de dias, se limita a 01 - 31; 
@@ -24,9 +25,16 @@ Desenvolver uma aplicação mais próxima da realidade, com validações, consul
 
 - Caso todos os campos estejam corretamente preenchidos será apresentado um modal, confirmando o cadastro da despesa;
   - A despesa poderá ser vizualizada na aba de consulta; 
-  -    
+
+<hr>
+
+> Consulta de despesa:
  
-- Validação com base em que; 
-   - Modal no formulário;  
-- Filtro; 
-- Despesas salvas e filtragem;   
+#### Na aba consulta será disponibilizado as despesas cadastradas (salvo no local storage - armazenamento do navegador)
+
+- Será possível filtrar com base em todos os campos ou em campos indivíduais;
+- Na aba todos os registro; 
+  - Irá resetar a lista e demonstrar todas as despesas; 
+- Também é possível deletar as despesas desejadas; 
+
+<hr>
